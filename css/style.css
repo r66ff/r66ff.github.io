@@ -1,7 +1,75 @@
+body{
+  padding-top: 70px;
+  color: #12000B;
+}
+a{
+  color: #B5005B;
+  -webkit-transition: color .3s ease-out;
+  -moz-transition: color .3s ease-out;
+  -o-transition: color .3s ease-out;
+  transition: color .3s ease-out;
+}
+a:hover, a:active, a:focus{
+  color: #ED0077;
+  text-decoration: none;
+}
+.container-fluid{
+  padding: 0;
+}
+h1{
+  margin-bottom: 40px;
+}
+h2{
+  margin-bottom: 20px;
+}
+#intro{
+  background: url(../img/banner.png) no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+#navigation{
+  height: 70px;
+  background-color: #fff;
+}
+.navbar-brand {
+  width: 50px;
+}
+.nav-link, .display-3, .display-4{
+  color: #12000B;
+}
+.nav-link:hover, .nav-link.active{
+  color: #ED0077;
+}
 img{
   max-width: 100%;
 }
 .navbar-toggler-icon.fa {
   font-size: 32px;
   height: auto;
+}
+h1.display-3 {
+  padding-top: 10%;
+}
+h2.display-4{
+  font-size: 3rem;
+}
+.fa-heart{
+  color: #ED0077;
+}
+.block{
+  margin: 90px 0;
+}
+footer {
+  background-color: #CF0068;
+  padding: 60px 0;
+  color: #fff;
+  margin-top: 120px;
+}
+footer a{
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+footer a:hover, footer a:active, footer a:focus{
+  color: #fff;
 }

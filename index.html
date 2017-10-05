@@ -24,31 +24,35 @@
   </head>
   <body data-spy="scroll" data-target="#navigation" data-offset="0">
     <div class="container-fluid">
-      <header class="container">
+      <header>
         <nav id="navigation" class="navbar navbar-expand-md fixed-top">
-          <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Antonina Serdyukova Howard Software Engineer"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon fa fa-bars"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#about">About Me</a>
-              <a class="nav-item nav-link" href="#what">What I Do</a>
-              <a class="nav-item nav-link" href="#skills">My Skills</a>
-              <a class="nav-item nav-link" href="#projects">Projects</a>
-              <a class="nav-item nav-link" href="#contact">Contact</a>
+          <div class="container">
+            <a class="navbar-brand" href="index.html#intro"><img src="img/logo.png" alt="Antonina Serdyukova Howard Software Engineer"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#about">About Me</a>
+                <a class="nav-item nav-link" href="#what">What I Do</a>
+                <a class="nav-item nav-link" href="#skills">My Skills</a>
+                <a class="nav-item nav-link" href="#projects">Projects</a>
+                <a class="nav-item nav-link" href="#contact">Contact</a>
+              </div>
             </div>
           </div>
         </nav>
-      </header>
-      <div class="container">
-        <div id="intro" class="row">
-          <div class="col-12">
-            <h1>Hi! I'm Antonina and I <i class="fa fa-heart" title="I love to code" aria-hidden="true"></i> code!</h1>
-            <h2>Building products where elegant technical solution meets beautiful design.</h2>
+        <div id="intro">
+          <div class="bgc">
+            <div class="container">
+              <h1 class="display-3">Hi! I'm Antonina and I <i class="fa fa-heart" title="I love to code" aria-hidden="true"></i> code!</h1>
+              <h2 class="display-4">Building products where elegant technical solution meets beautiful design.</h2>
+            </div>
           </div>
         </div>
-        <div id="about" class="row">
+      </header>
+      <div class="container">
+        <div id="about" class="row block">
           <h1 class="col-12">About Me</h1>
           <div class="col-sm-4">
             <img src="img/antonina.jpg" alt="Antonina Serdyukova Howard Software Engineer">
@@ -64,21 +68,21 @@
             </p>
           </div>
         </div>
-        <div id="what" class="row">
+        <div id="what" class="row block">
           <div class="col-12">
             <h1>What I Do</h1>
             <a href="https://drive.google.com/file/d/0Bxzdm-dou3xFRnpBQWNLbWR1MWc/view?usp=sharing" target="_blank"><i class="fa fa-file-text-o" aria-hidden="true"></i> See Full Resume</a>
-            <ul>
-              <li><h2><i class="fa fa-globe" aria-hidden="true"></i> Web Development</h2><p>I have been working in the field since 2014 and have built many websites and web apps.</p></li>
-              <li><h2><i class="fa fa-mobile" aria-hidden="true"></i> Mobile Development</h2><p>In a team of 3 developers, I built a working iOS proof of concept for a <a href="articulo.html">mobile app</a> using React Native.</p></li>
-              <li><h2><i class="fa fa-lock" aria-hidden="true"></i> Cyber Security</h2><p>I have a B.S. degree in Information Security and have participated in research involving botnet traffic analysis as well as insider threat identification.</p></li>
-              <li><h2><i class="fa fa-gift" aria-hidden="true"></i> Product Creation</h2><p>I collaborated with a team of 9 people to create product concepts at <a href="https://www.oath.com/">AOL, Inc (now Oath)</a>.</p></li>
-              <li><h2><i class="fa fa-users" aria-hidden="true"></i> User Experience</h2><p>While working at a digital agency, <a href="https://avatarnewyork.com/">Avatar New York</a>, I developped user experinces that brought usability and beauty together.</p></li>
-              <li><h2><i class="fa fa-book" aria-hidden="true"></i> Tech Education</h2><p>I am currently teaching a Part-Time Web Development Intensive course at a coding bootcamp, <a href="https://nycda.com/courses/web-development-intensive-part-time">the New York Code &amp; Design Academy</a>.</p></li>
-            </ul>
+            <div class="row">
+              <div class="col-sm-6"><h2><i class="fa fa-globe" aria-hidden="true"></i> Web Development</h2><p>I have been working in the field since 2014 and have built many websites and web apps.</p></div>
+              <div class="col-sm-6"><h2><i class="fa fa-mobile" aria-hidden="true"></i> Mobile Development</h2><p>In a team of 3 developers, I built a working iOS proof of concept for a <a href="articulo.html">mobile app</a> using React Native.</p></div>
+              <div class="col-sm-6"><h2><i class="fa fa-lock" aria-hidden="true"></i> Cyber Security</h2><p>I have a B.S. degree in Information Security and have participated in research involving botnet traffic analysis as well as insider threat identification.</p></div>
+              <div class="col-sm-6"><h2><i class="fa fa-gift" aria-hidden="true"></i> Product Creation</h2><p>I collaborated with a team of 9 people to create product concepts at <a href="https://www.oath.com/">AOL, Inc (now Oath)</a>.</p></div>
+              <div class="col-sm-6"><h2><i class="fa fa-users" aria-hidden="true"></i> User Experience</h2><p>While working at a digital agency, <a href="https://avatarnewyork.com/">Avatar New York</a>, I developped user experinces that brought usability and beauty together.</p></div>
+              <div class="col-sm-6"><h2><i class="fa fa-book" aria-hidden="true"></i> Tech Education</h2><p>I am currently teaching a Part-Time Web Development Intensive course at a coding bootcamp, <a href="https://nycda.com/courses/web-development-intensive-part-time">the New York Code &amp; Design Academy</a>.</p></div>
+            </div>
           </div>
         </div>
-        <div id="skills" class="row">
+        <div id="skills" class="row block">
           <div class="col-12">
             <h1>My Skills</h1>
             <a href="https://drive.google.com/file/d/0Bxzdm-dou3xFRnpBQWNLbWR1MWc/view?usp=sharing" target="_blank"><i class="fa fa-file-text-o" aria-hidden="true"></i> See Full Resume</a>
@@ -114,7 +118,7 @@
             </ul>
           </div>
         </div>
-        <div id="projects" class="row">
+        <div id="projects" class="row block">
           <h1 class="col-12">Projects</h1>
           <div class="col-6">
             <h2>Articulo Mobile App</h2>
@@ -153,11 +157,11 @@
       <footer>
         <div class="container">
           <h2 id="contact">Contact</h2>
-          <ul>
-            <li><a href="https://www.linkedin.com/in/antoninas/"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
-            <li><a href="https://github.com/r66ff"><i class="fa fa-github-alt" aria-hidden="true"></i> GitHub</a></li>
-            <li><a href="https://drive.google.com/file/d/0Bxzdm-dou3xFRnpBQWNLbWR1MWc/view?usp=sharing" target="_blank"><i class="fa fa-file-text-o" aria-hidden="true"></i> See Full Resume</a></li>
-          </ul>
+          <div class="row">
+            <div class="col-sm-4"><a href="https://www.linkedin.com/in/antoninas/"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></div>
+            <div class="col-sm-4"><a href="https://github.com/r66ff"><i class="fa fa-github-alt" aria-hidden="true"></i> GitHub</a></div>
+            <div class="col-sm-4"><a href="https://drive.google.com/file/d/0Bxzdm-dou3xFRnpBQWNLbWR1MWc/view?usp=sharing" target="_blank"><i class="fa fa-file-text-o" aria-hidden="true"></i> See Full Resume</a></div>
+          </div>
         </div>
       </footer>
     </div>

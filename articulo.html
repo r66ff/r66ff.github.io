@@ -11,9 +11,9 @@
 		<meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.ico">
 		<!--[if IE]>
-			<link rel="shortcut icon" href="img/favicon.ico">
+			<link rel="shortcut icon" href="favicon.ico">
 		<![endif]-->
 
     <!-- Bootstrap CSS -->
@@ -22,41 +22,38 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Antonina Serdyukova | Full Stack Software Engineer</title>
   </head>
-  <body>
+  <body id="articulo-page">
     <div class="container-fluid">
-      <div class="container-fluid">
-        <header class="container">
-          <nav id="navigation" class="navbar navbar-expand-md fixed-top">
-            <div class="container">
-              <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Antonina Serdyukova Howard Software Engineer"></a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon fa fa-bars"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-item nav-link" href="index.html#about">About Me</a>
-                  <a class="nav-item nav-link" href="index.html#what">What I Do</a>
-                  <a class="nav-item nav-link" href="index.html#skills">My Skills</a>
-                  <a class="nav-item nav-link" href="index.html#projects">Projects</a>
-                  <a class="nav-item nav-link" href="index.html#contact">Contact</a>
-                </div>
+      <header>
+        <nav id="navigation" class="navbar navbar-expand-md fixed-top">
+          <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Antonina Serdyukova Howard Software Engineer"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html#about">About Me</a>
+                <a class="nav-item nav-link" href="index.html#what">What I Do</a>
+                <a class="nav-item nav-link" href="index.html#skills">My Skills</a>
+                <a class="nav-item nav-link" href="index.html#projects">Projects</a>
+                <a class="nav-item nav-link" href="index.html#contact">Contact</a>
               </div>
             </div>
-          </nav>
-        </header>
-      <div class="container">
-        <div id="intro" class="row">
-          <div class="col-12 text-center">
+          </div>
+        </nav>
+        <div id="intro-art">
+          <div class="container">
             <h1 class="display-3">Articulo Mobile App</h1>
             <h2 class="display-4">Content You Trust</h2>
           </div>
         </div>
-        <div id="about" class="row">
-          <h1 class="col-12">What Is Articulo</h1>
-          <div class="col-sm-4">
-            <img src="img/articulo.jpg" alt="Articulo Mobile App">
-          </div>
+      </header>
+      <a class="resume-link" href="https://drive.google.com/open?id=0Bxzdm-dou3xFMHRFX1dSblBsVTQ" target="_blank"><i class="fa fa-video-camera" aria-hidden="true"></i> Watch Sizzle Reel</a>
+      <div class="container">
+        <div id="about" class="row block">
           <div class="col-sm-8">
+            <h1 class="col-12">What Is Articulo</h1>
             <p>
               Articulo is a mobile app that provids a way to consume content that you trust. Follow people who inspire them and read what they read!
             </p>
@@ -66,55 +63,61 @@
             <p>
               I took a significant part in the implementation of the app in React Native, managing the code on BitBucket, creating weekly sprints, as well as the ideation for the app concept and product development.
             </p>
-            <ul>
-              <li><a href="https://medium.com/@articuloapp/about-articulo-7707ff898884" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i> Post on Medium</a></li>
-              <li><a href="https://drive.google.com/open?id=0Bxzdm-dou3xFMHRFX1dSblBsVTQ" target="_blank"><i class="fa fa-video-camera" aria-hidden="true"></i> Watch Sizzle Reel</a></li>
-            </ul>
-          </div>
-        </div>
-        <div id="what" class="row">
-          <h1 class="col-12">How We Built It</h1>
-          <div class="col-12">
-            <h3>We went through the whole Product Lifecycle:</h3>
-            <ul>
-              <li>Ideation</li>
-              <li>Wireframing</li>
-              <li>Information Architecture</li>
-              <li>Development</li>
-              <li>Testing</li>
-              <li>Promoting the App</li>
-            </ul>
-          </div>
-        </div>
-        <div id="skills" class="row">
-          <h1 class="col-12">Tech Stack</h1>
-          <div class="col-sm-4">
-            <h3>Languages</h3>
-            <ul>
-              <li>JavaScript</li>
-              <li>HTML/CSS</li>
-            </ul>
           </div>
           <div class="col-sm-4">
-            <h3>Libraries &amp; Frameworks</h3>
-            <ul>
-              <li>Node.js</li>
-              <li>React Native</li>
-              <li>Redux</li>
-              <li>Firebase</li>
-            </ul>
+            <img src="img/articulo.png" alt="Articulo Mobile App">
+          </div>
+        </div>
+      </div>
+      <div id="what" class="block">
+        <a  class="resume-link" href="https://medium.com/@articuloapp/about-articulo-7707ff898884" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i>Read post on Medium</a>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h1>How Did We Build It:</h1>
+              <h4>We went through the whole Product Lifecycle:</h4>
+              <ul class="list-unstyled">
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i>Ideation</li>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i>Wireframing</li>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i>Information Architecture</li>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i>Development</li>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i>Testing</li>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i>Promoting the App</li>
+              </ul>
+            </div>
+            <div class="col-4 ml-auto">
+              <h1>Tech Stack:</h1>
+              <div id="skills" class="row">
+                <div class="col-6">
+                  <h4>Languages</h4>
+                  <ul class="list-unstyled">
+                    <li><i class="fa fa-angle-right" aria-hidden="true"></i>JavaScript</li>
+                    <li><i class="fa fa-angle-right" aria-hidden="true"></i>HTML/CSS</li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h4>Tools</h4>
+                  <ul class="list-unstyled">
+                    <li><i class="fa fa-angle-right" aria-hidden="true"></i>Node.js</li>
+                    <li><i class="fa fa-angle-right" aria-hidden="true"></i>React Native</li>
+                    <li><i class="fa fa-angle-right" aria-hidden="true"></i>Redux</li>
+                    <li><i class="fa fa-angle-right" aria-hidden="true"></i>Firebase</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <footer>
       <div class="container">
-        <h2>Contact</h2>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/antoninas/"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
-          <li><a href="https://github.com/r66ff"><i class="fa fa-github-alt" aria-hidden="true"></i> GitHub</a></li>
-          <li><a href="https://drive.google.com/file/d/0Bxzdm-dou3xFRnpBQWNLbWR1MWc/view?usp=sharing" target="_blank"><i class="fa fa-file-text-o" aria-hidden="true"></i> See Full Resume</a></li>
-        </ul>
+        <h2 id="contact">Contact</h2>
+        <div class="row">
+          <div class="col-sm-4"><a href="img/antonina-serdyukova---resume.pdf" target="_blank"><i class="fa fa-file-text-o" aria-hidden="true"></i>See Full Resume</a></div>
+          <div class="col-sm-4"><a href="https://www.linkedin.com/in/antoninas/"><i class="fa fa-linkedin" aria-hidden="true"></i>LinkedIn</a></div>
+          <div class="col-sm-4"><a href="https://github.com/r66ff"><i class="fa fa-github-alt" aria-hidden="true"></i>GitHub</a></div>
+        </div>
       </div>
     </footer>
 

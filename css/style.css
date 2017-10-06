@@ -34,6 +34,12 @@ h2{
 #intro{
   background: url(../img/banner.png) no-repeat;
   background-size: cover;
+}
+#intro-art{
+  background: url(../img/banner-art.png) center no-repeat;
+  background-size: contain;
+}
+#intro, #intro-art{
   height: 500px;
   text-align: center;
 }
@@ -77,6 +83,9 @@ h2{
 #navigation{
   height: 70px;
   background-color: #fff;
+  -moz-box-shadow: 0 1px 3px rgba(120, 120, 120, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(120, 120, 120, 0.2);
+  box-shadow: 0 1px 3px rgba(120, 120, 120, 0.2);
 }
 .navbar-brand {
   width: 50px;
@@ -110,6 +119,13 @@ h2.display-4{
 }
 .fa-mobile{
   font-size: 35px;
+}
+#articulo-page .fa-angle-right{
+  color: #5C9807;
+  color: rgba(92, 152, 7, .8);
+}
+#articulo-page #what.block{
+  margin-bottom: 0;
 }
 .block{
   margin: 90px auto;

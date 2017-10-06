@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+  //Smooth Scroll
   // Select all links with hashes
   $('a[href*="#"]')
   // Remove links that don't actually link to anything
@@ -35,4 +37,21 @@ $(document).ready(function() {
       }
     }
   });
+
+  // mobile
+  function mobileIntro(id){
+    if($(window).width() < 768){
+      $(id).css({
+        height: $(window).height() - 70
+      });
+      $(id + ' > .container').css({
+        'padding-top': ($(id).outerHeight() - $(id + ' > .container').outerHeight()) / 2
+      });
+    }
+  }
+  mobileIntro('#intro');
+
+  window.addEventListener('resize', function() {
+    mobileIntro('#intro');
+  }, false);
 });

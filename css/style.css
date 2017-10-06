@@ -59,7 +59,7 @@ h2{
 #what > .resume-link, #projects > .resume-link{
   margin-bottom: 90px;
 }
-#what .col-sm-6, #projects .col-6{
+#what .col-sm-6, #projects .col-sm-6{
   margin-bottom: 30px;
 }
 #projects h2{
@@ -188,4 +188,42 @@ footer a:hover, footer a:active, footer a:focus{
 footer h2{
   color: #fff;
   margin-bottom: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  body{
+    padding-top: 0;
+  }
+  h1.display-3{
+    font-size: 2.2rem;
+  }
+  h2.display-4{
+    font-size: 1.5rem;
+  }
+  h1{
+    font-size: 2.2rem;
+  }
+  h2{
+    font-size: 1.5rem;
+  }
+  #navigation{
+    position: relative;
+  }
+  .navbar{
+    display: block;
+  }
+  #about img{
+    margin-bottom: 15px;
+  }
+  #skills .col-sm-4{
+    margin-bottom: 30px;
+  }
+  .navbar-nav {
+    background-color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  }
+  footer .col-sm-4{
+    margin-bottom: 20px;
+  }
 }

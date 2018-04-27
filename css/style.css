@@ -31,6 +31,10 @@ h1{
 h2{
   margin-bottom: 20px;
 }
+h3{
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
 #intro{
   background: url(../img/banner.png) no-repeat;
   background-size: cover;

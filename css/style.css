@@ -136,7 +136,7 @@ h2.display-4{
 }
 .list-group-item{
   background-color: #5C9807;
-  background-color: rgba(92, 152, 7, .4);
+  background-color: rgba(92, 152, 7, .5);
   font-weight: 900;
   border: none;
 }
@@ -151,30 +151,25 @@ h2.display-4{
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-#langs .list-group-item:nth-child(2){
-  width: 90%;
-  background-color: rgba(92, 152, 7, .3);
-}
+
 #langs .list-group-item:nth-child(4){
   width: 60%;
   background-color: rgba(92, 152, 7, .2);
 }
-#libs .list-group-item:nth-child(2){
-  width: 90%;
+
+#libs .list-group-item:nth-child(5){
+  width: 80%;
   background-color: rgba(92, 152, 7, .3);
 }
-#libs .list-group-item:nth-child(4){
+#libs .list-group-item:nth-child(3){
   width: 90%;
-  background-color: rgba(92, 152, 7, .3);
+  background-color: rgba(92, 152, 7, .4);
 }
 #else .list-group-item:nth-child(2){
   width: 90%;
-  background-color: rgba(92, 152, 7, .3);
+  background-color: rgba(92, 152, 7, .4);
 }
-#else .list-group-item:nth-child(3){
-  width: 60%;
-  background-color: rgba(92, 152, 7, .2);
-}
+
 footer {
   background-color: #CF0068;
   padding: 60px 0;

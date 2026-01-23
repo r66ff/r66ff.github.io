@@ -1,0 +1,308 @@
+---
+// Budget App Demo Page
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Pure JavaScript Budget App by Antonina Serdyukova</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Glegoo:400');
+      body{
+        font-family: 'Glegoo', Georgia, serif;
+        font-weight: 400;
+        color: #323135;
+      }
+      h1, h2, h3, h4, h5, h6{
+        font-weight: 400;
+      }
+      .exp-color{
+        color: #f2a897;
+      }
+      .exp-color-lt{
+        color: #f7e2dd;
+      }
+      .exp-bg-color-lt{
+        background-color: #f7e2dd;
+      }
+      .exp-border-color{
+        border-color: #f2a897;
+      }
+      .inc-color{
+        color: #beadee;
+      }
+      .inc-border-color{
+        border-color: #beadee;
+      }
+      .inc-color-lt{
+        color: #e6e1f4;
+      }
+      .inc-bg-color-lt{
+        background-color: #e6e1f4;
+      }
+      #budget-totals {
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        padding: 30px;
+      }
+      #total-budget{
+        font-size: 3rem;
+        margin: 15px 0;
+      }
+      #total-inc, #total-exp{
+        padding: 10px;
+      }
+      #add{
+        margin-top: 40px;
+      }
+      #add-type {
+        max-width: 15%;
+        margin-right: 5%;
+        float: left;
+        padding: .25rem .75rem;
+      }
+      #add-amount{
+        max-width: 80%;
+        float: left;
+      }
+      .form-control{
+        margin-bottom: 20px;
+      }
+      .fa.fa-check-square{
+        font-size: 36px;
+      }
+      #data-container > div{
+        padding: 30px;
+      }
+      .item{
+        background-color: #fff;
+        padding: 15px;
+        margin-top: 20px;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+      }
+      .item .fa.fa-times{
+        display: none;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+      .item:hover{
+        padding-top: 40px;
+      }
+      .item:hover .fa.fa-times{
+        display: block;
+        opacity: .5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-lg-center">
+        <div id="budget-totals" class="col-lg-4 text-center">
+          <h1>Budget It!</h1>
+          <h2 id="total-budget">+ 1000</h2>
+          <h3 id="total-inc" class="inc-bg-color-lt">+ 1500</h3>
+          <h3 id="total-exp" class="exp-bg-color-lt">- 500</h3>
+          <div id="add">
+            <select id="add-type"class="form-control inc-border-color">
+              <option value="inc">+</option>
+              <option value="exp">-</option>
+            </select>
+            <input type="number" id="add-amount" class="form-control inc-border-color" value="" placeholder="Amount">
+            <input type="text" id="add-desc" class="form-control inc-border-color" value="" placeholder="Description">
+            <i id="add-new" class="fa fa-check-square inc-color" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div id="data-container" class="row">
+        <div class="col-lg-6 inc-bg-color-lt text-left">
+          <h2>Income</h2>
+          <div id="inc-items" class="row">
+          </div>
+        </div>
+        <div class="col-lg-6 exp-bg-color-lt">
+          <h2 class="text-right">Expenses</h2>
+          <div id="exp-items" class="row">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/01039dafd9.js"></script>
+    <!-- Budget App JavaScript -->
+    <script is:inline>
+      // APP LOGIC CONTROLLER
+      var AppController = (function(){
+        var Item = function(id, amount, desc){
+          this.id = id;
+          this.amount = amount;
+          this.desc = desc;
+        };
+        var data = {
+          all: { inc: [], exp: [] },
+          totals: { budget: 0, exp: 0, inc: 0 }
+        }
+
+        var sum = function(arr){
+          var s = 0;
+          arr.forEach(function(current){ s += current.amount; });
+          return s;
+        };
+
+        return{
+          setNewItem: function(type, amount, desc){
+            var id;
+            if(data.all[type].length > 0){
+              id = data.all[type][data.all[type].length - 1].id + 1;
+            } else { id = 0; }
+            var item = new Item(id, amount, desc);
+            data.all[type].push(item);
+            return item;
+          },
+          calculateTotals: function(){
+            data.totals.inc = sum(data.all.inc);
+            data.totals.exp = sum(data.all.exp);
+            data.totals.budget = data.totals.inc - data.totals.exp;
+          },
+          getTotals: function(){ return data.totals; },
+          deleteItem: function(type, id){
+            data.all[type].forEach(function(current, index, array){
+              if(current.id === parseInt(id)){ array.splice(index, 1); }
+            })
+          }
+        }
+      })();
+
+      // UI CONTROLLER
+      var UIController = (function(){
+        var selectors = {
+          totalBudget: 'total-budget', totalIncome: 'total-inc', totalExpenses: 'total-exp',
+          addType: 'add-type', addAmount: 'add-amount', addDesc: 'add-desc',
+          addNewItem: 'add-new', incItems: 'inc-items', expItems: 'exp-items'
+        }
+
+        return {
+          makePageFullHeight: function(){
+            if(window.innerWidth > 767){
+              document.getElementById('data-container').style.height = window.innerHeight + 'px';
+            }
+          },
+          getSelectors: function(){ return selectors; },
+          getInputData: function(){
+            return{
+              type: document.getElementById(selectors.addType).value,
+              amount: parseFloat(document.getElementById(selectors.addAmount).value),
+              desc: document.getElementById(selectors.addDesc).value
+            }
+          },
+          displayItem: function(type, item){
+            var el, html, sign;
+            html = '<div id="@type@-@id@" class="item col-md-7"><div class="row"><div class="col-8 desc">@desc@</div><div class="col-4 amount text-right">@sign@ @amount@</div><i class="fa fa-times" aria-hidden="true"></i></div></div>';
+            if(type === 'inc'){ el = document.getElementById(selectors.incItems); sign = '+'; }
+            else{ el = document.getElementById(selectors.expItems); sign = '-'; }
+            html = html.replace('@type@', type).replace('@id@', item.id).replace('@desc@', item.desc).replace('@sign@', sign);
+            html = html.replace('@amount@', parseFloat(Math.round(item.amount * 100) / 100).toFixed(2));
+            el.insertAdjacentHTML('beforeend', html);
+            if(type === 'exp'){ document.getElementById('exp-' + item.id).classList.add('ml-md-auto'); }
+          },
+          clearFields: function(){
+            document.getElementById(selectors.addAmount).value = '';
+            document.getElementById(selectors.addDesc).value = '';
+            document.getElementById(selectors.addAmount).focus();
+          },
+          displayTotals: function(totals){
+            var sign;
+            totals.budget > 0 ? sign = '+ ' : sign = '- ';
+            if(totals.budget === 0){sign = ''};
+            document.getElementById(selectors.totalBudget).innerHTML = sign + Math.abs(parseFloat(Math.round(totals.budget * 100) / 100).toFixed(2));
+            document.getElementById(selectors.totalIncome).innerHTML = '+ ' + parseFloat(Math.round(totals.inc * 100) / 100).toFixed(2);
+            document.getElementById(selectors.totalExpenses).innerHTML = '- ' + parseFloat(Math.round(totals.exp * 100) / 100).toFixed(2);
+          },
+          changeInputBorderColor: function(){
+            var type = document.getElementById(selectors.addType).value;
+            var elements = document.getElementsByClassName('form-control');
+            var icon = document.getElementById(selectors.addNewItem);
+            if(type === 'inc'){
+              Array.prototype.forEach.call(elements, function(current){
+                current.classList.remove('exp-border-color');
+                current.classList.add('inc-border-color');
+              });
+              icon.classList.remove('exp-color');
+              icon.classList.add('inc-color');
+            } else if(type === 'exp'){
+              Array.prototype.forEach.call(elements, function(current){
+                current.classList.remove('inc-border-color');
+                current.classList.add('exp-border-color');
+              });
+              icon.classList.remove('inc-color');
+              icon.classList.add('exp-color');
+            }
+          }
+        }
+      })();
+
+      // MAIN CONTROLLER
+      var Controller = (function(AppCtrl, UICtrl) {
+        var setEventListeners = function(){
+          var selectors = UICtrl.getSelectors();
+          document.getElementById(selectors.addNewItem).addEventListener('click', handleNewItem);
+          document.addEventListener('keypress', function(event) {
+            if (event.keyCode === 13 || event.which === 13) { handleNewItem(); }
+          });
+          document.getElementById(selectors.addType).addEventListener('change', function(){
+            UICtrl.changeInputBorderColor();
+          });
+          document.getElementById('data-container').addEventListener('click', function(event){
+            if(event.srcElement.classList.contains('fa-times')){
+              var itemElement = findAncestor(event.srcElement, 'item');
+              if(itemElement !== null){
+                var id = itemElement.id.split('-');
+                if(id[0] === 'inc'){ AppCtrl.deleteItem('inc', id[1]); }
+                else if(id[0] === 'exp'){ AppCtrl.deleteItem('exp', id[1]); }
+                itemElement.parentNode.removeChild(itemElement);
+              }
+            }
+            AppCtrl.calculateTotals();
+            var totals = AppCtrl.getTotals();
+            UICtrl.displayTotals(totals);
+          });
+        }
+
+        var findAncestor = function (el, cls) {
+          while ((el = el.parentElement) && !el.classList.contains(cls));
+          return el;
+        }
+
+        var handleNewItem = function(){
+          var input = UICtrl.getInputData();
+          if (input.desc !== "" && !isNaN(input.amount) && input.amount > 0) {
+            var item = AppCtrl.setNewItem(input.type, input.amount, input.desc);
+            UICtrl.displayItem(input.type, item);
+            UICtrl.clearFields();
+            AppCtrl.calculateTotals();
+            var totals = AppCtrl.getTotals();
+            UICtrl.displayTotals(totals);
+          }
+        }
+
+        return {
+          init: function() {
+            console.log('Budget app running...');
+            UICtrl.makePageFullHeight();
+            UICtrl.displayTotals({ budget: 0, inc: 0, exp: 0 });
+            setEventListeners();
+          }
+        };
+      })(AppController, UIController);
+
+      Controller.init();
+    </script>
+  </body>
+</html>

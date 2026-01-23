@@ -1,0 +1,277 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import SkillsList from '../components/SkillsList.astro'
+
+const allProjects = await getCollection('projects')
+const sortedProjects = allProjects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+---
+
+<BaseLayout title="Antonina Serdyukova | Full Stack Software Engineer">
+  <Header />
+  
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section id="intro" class="min-h-[70vh] flex items-center bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+      <div class="container mx-auto px-4 py-20">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+            Hi! I'm Antonina and I <span class="text-primary-600 dark:text-primary-400">♥</span> code!
+          </h1>
+          <h2 class="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-8">
+            Building products where elegant technical solution meets beautiful design.
+          </h2>
+          <a
+            href="#projects"
+            class="inline-block px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+          >
+            View My Work
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">About Me</h2>
+        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 items-center">
+          <div class="flex justify-center">
+            <img
+              src="/tda/img/antonina.jpg"
+              alt="Antonina Serdyukova"
+              class="rounded-lg shadow-lg w-64 h-64 object-cover"
+            />
+          </div>
+          <div class="md:col-span-2 space-y-4 text-gray-700 dark:text-gray-300">
+            <p>
+              Since 2014 I have been working as a Fullstack Developer building web applications, API solutions and mobile applications for various clients.
+            </p>
+            <p>
+              I am experienced in JavaScript (ES6, Node.js, React.js, React Native, Redux, Gatsby.js), Python 3, PHP, HTML, CSS, Docker, AWS, GraphQL, SQL and noSQL databases.
+            </p>
+            <p>
+              I graduated Summa Cum Laude with a Bachelors of Science in Computer Science and Information Security in May, 2017.
+            </p>
+            <p>
+              While in school, I participated in research involving botnet traffic analysis, as well as insider threat identification.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Do Section -->
+    <section id="what" class="py-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <a
+            href="/tda/img/antonina-serdyukova-resume-2025.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <span>See Full Resume</span>
+          </a>
+        </div>
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">What I Do</h2>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6">
+            <div class="text-primary-600 dark:text-primary-400 mb-4">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Web Development</h3>
+            <p class="text-gray-600 dark:text-gray-400">I have been working in the field since 2014 and have built and maintained many websites, web apps and APIs.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6">
+            <div class="text-primary-600 dark:text-primary-400 mb-4">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Mobile Development</h3>
+            <p class="text-gray-600 dark:text-gray-400">In a team of 3 developers, I built a working iOS proof of concept for a mobile app using React Native.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6">
+            <div class="text-primary-600 dark:text-primary-400 mb-4">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Cyber Security</h3>
+            <p class="text-gray-600 dark:text-gray-400">I have a B.S. degree in Information Security and have participated in research involving botnet traffic analysis and insider threat identification.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6">
+            <div class="text-primary-600 dark:text-primary-400 mb-4">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Product Creation</h3>
+            <p class="text-gray-600 dark:text-gray-400">I collaborated with a team of 9 people to create product concepts at <a href="https://www.oath.com/" class="text-primary-600 dark:text-primary-400 hover:underline">AOL, Inc (now Oath, Inc)</a>.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6">
+            <div class="text-primary-600 dark:text-primary-400 mb-4">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">User Experience</h3>
+            <p class="text-gray-600 dark:text-gray-400">While working at digital agency <a href="https://www.happycog.com/" class="text-primary-600 dark:text-primary-400 hover:underline">Happy Cog</a>, I developed user experiences that brought reliability, usability and beauty together.</p>
+          </div>
+
+          <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6">
+            <div class="text-primary-600 dark:text-primary-400 mb-4">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">Tech Education</h3>
+            <p class="text-gray-600 dark:text-gray-400">I taught a Part-Time Web Development Intensive course at a coding bootcamp, <a href="https://nycda.com/courses/web-development-intensive-part-time" class="text-primary-600 dark:text-primary-400 hover:underline">the New York Code & Design Academy</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">My Skills</h2>
+        <div class="max-w-6xl mx-auto">
+          <SkillsList />
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <a
+            href="/tda/img/antonina-serdyukova-resume-2025.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <span>See Full Resume</span>
+          </a>
+        </div>
+        <h2 class="text-4xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">Projects</h2>
+        
+        <!-- Tag Filter -->
+        <div id="tag-filter" class="max-w-4xl mx-auto mb-8">
+          <div class="flex flex-wrap gap-2 justify-center">
+            <button
+              class="tag-btn px-4 py-2 rounded-full bg-primary-600 text-white font-medium transition-all duration-300"
+              data-tag="all"
+            >
+              All Projects
+            </button>
+          </div>
+        </div>
+
+        <div id="projects-grid" class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+          {sortedProjects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              slug={project.slug}
+              image={project.data.image}
+              demo={project.data.demo}
+              github={project.data.github}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Tag filtering functionality
+  const projectCards = document.querySelectorAll('.project-card')
+  const tagFilter = document.getElementById('tag-filter')
+  
+  // Collect all unique tags
+  const allTags = new Set()
+  projectCards.forEach(card => {
+    const tags = card.getAttribute('data-tags')?.split(',') || []
+    tags.forEach(tag => allTags.add(tag.trim()))
+  })
+
+  // Create tag buttons
+  const tagButtons = Array.from(allTags).sort()
+  tagButtons.forEach(tag => {
+    const btn = document.createElement('button')
+    btn.className = 'tag-btn px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary-600 hover:text-white font-medium transition-all duration-300'
+    btn.setAttribute('data-tag', tag as string)
+    btn.textContent = tag as string
+    tagFilter?.querySelector('div')?.appendChild(btn)
+  })
+
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.tag-btn')
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedTag = btn.getAttribute('data-tag')
+      
+      // Update active button
+      filterBtns.forEach(b => {
+        if (b === btn) {
+          b.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300')
+          b.classList.add('bg-primary-600', 'text-white')
+        } else {
+          b.classList.remove('bg-primary-600', 'text-white')
+          b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300')
+        }
+      })
+
+      // Filter projects
+      projectCards.forEach(card => {
+        const cardTags = card.getAttribute('data-tags')?.split(',') || []
+        const htmlCard = card as HTMLElement
+        if (selectedTag === 'all' || cardTags.some(tag => tag.trim() === selectedTag)) {
+          htmlCard.style.display = 'block'
+          htmlCard.classList.add('animate-fadeIn')
+        } else {
+          htmlCard.style.display = 'none'
+        }
+      })
+    })
+  })
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+</style>

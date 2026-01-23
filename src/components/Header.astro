@@ -1,0 +1,70 @@
+---
+import ThemeToggle from './ThemeToggle.astro'
+
+const navItems = [
+  { href: '/tda/#about', label: 'About Me' },
+  { href: '/tda/#skills', label: 'My Skills' },
+  { href: '/tda/#projects', label: 'Projects' },
+  { href: '/tda/#contact', label: 'Contact' }
+]
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <a href="/tda/" class="flex items-center space-x-2">
+        <img src="/tda/img/logo.png" alt="Antonina Serdyukova" class="h-10 w-auto" />
+      </a>
+      
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <div id="mobile-menu" class="hidden md:flex md:items-center md:space-x-8">
+        <div class="flex flex-col md:flex-row md:items-center md:space-x-8 space-y-4 md:space-y-0 py-4 md:py-0">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+        <ThemeToggle />
+      </div>
+    </div>
+
+    <div id="mobile-menu-expanded" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-800 pt-4">
+      <div class="flex flex-col space-y-4">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
+          >
+            {item.label}
+          </a>
+        ))}
+        <div class="pt-2">
+          <ThemeToggle />
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button')
+  const mobileMenuExpanded = document.getElementById('mobile-menu-expanded')
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenuExpanded?.classList.toggle('hidden')
+  })
+</script>

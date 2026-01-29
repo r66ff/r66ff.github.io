@@ -58,6 +58,7 @@ npm run preview
    - Go to Settings → Pages
    - Source: **GitHub Actions**
    - The workflow will auto-deploy on push
+   - Note: **Do not** use “Deploy from a branch” for Astro, since Jekyll will fail on `.astro` files.
 
 3. Enable Workflow Permissions:
    - Settings → Actions → General

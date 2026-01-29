@@ -144,7 +144,6 @@ Your project content here in Markdown...
 | `video` | URL | No | Video demo URL |
 | `image` | string | No | Preview image path |
 | `banner` | string | No | Banner image path |
-| `paper` | string | No | Research paper PDF path |
 | `icon` | string | No | Icon identifier |
 
 ### Updating Skills
@@ -183,6 +182,7 @@ The repository includes a GitHub Actions workflow that automatically deploys you
    - Navigate to **Settings** → **Pages**
    - Under **Source**, select **GitHub Actions**
    - Save the settings
+   - Note: **Do not** use “Deploy from a branch” for Astro, since Jekyll will try to parse `.astro` files and fail.
 
 3. **Enable Workflow Permissions**:
    - Go to **Settings** → **Actions** → **General**

@@ -117,8 +117,8 @@ date: 2024-01-15
 featured: true
 demo: "https://demo-url.com"
 github: "https://github.com/username/repo"
-image: "/tda/img/project-image.png"
-banner: "/tda/img/project-banner.png"
+image: "/img/project-image.png"
+banner: "/img/project-banner.png"
 ---
 
 ## Project Overview
@@ -194,7 +194,7 @@ The repository includes a GitHub Actions workflow that automatically deploys you
    - Push any commit to the `main` branch
    - GitHub Actions will automatically build and deploy your site
    - Check the **Actions** tab to monitor deployment progress
-   - Once complete, your site will be live at `https://r66ff.github.io/tda/`
+   - Once complete, your site will be live at `https://r66ff.github.io/`
 
 ### Option 2: Manual Deployment (Fallback)
 

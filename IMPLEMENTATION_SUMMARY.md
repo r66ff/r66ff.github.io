@@ -202,9 +202,9 @@ git push origin main
 
 ## URLs After Deployment
 
-- **Homepage**: `https://r66ff.github.io/tda/`
-- **Projects**: `https://r66ff.github.io/tda/projects/[project-name]/`
-- **Resume**: `https://r66ff.github.io/tda/img/antonina-serdyukova-resume-2025.pdf`
+- **Homepage**: `https://r66ff.github.io/`
+- **Projects**: `https://r66ff.github.io/projects/[project-name]/`
+- **Resume**: `https://r66ff.github.io/img/antonina-serdyukova-resume-2026.pdf`
 
 ## Success Criteria
 

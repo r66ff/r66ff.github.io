@@ -32,7 +32,7 @@ const isImageSvg = Boolean(image?.toLowerCase().endsWith('.svg'))
   )}
   <div class="p-6 flex-1 flex flex-col">
     <h3 class="text-xl md:text-2xl mb-2 text-gray-900 dark:text-gray-100">
-      <a href={`/tda/projects/${slug}`} class="inline-flex items-center gap-3 hover:text-link-hover dark:hover:text-primary-400 transition-colors">
+      <a href={`/projects/${slug}`} class="inline-flex items-center gap-3 hover:text-link-hover dark:hover:text-primary-400 transition-colors">
         {!image && icon && (
           <span
             class="w-7 h-7 text-primary-500 dark:text-primary-400 [&>svg]:w-full [&>svg]:h-full [&>svg]:stroke-[2]"
@@ -55,7 +55,7 @@ const isImageSvg = Boolean(image?.toLowerCase().endsWith('.svg'))
 
     <div class="mt-auto flex flex-wrap justify-between gap-3">
       <a
-        href={`/tda/projects/${slug}`}
+        href={`/projects/${slug}`}
         class="inline-flex items-center text-link dark:text-primary-400 hover:text-link-hover dark:hover:text-primary-300 font-medium transition-colors"
       >
         Learn More

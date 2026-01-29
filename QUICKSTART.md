@@ -64,7 +64,7 @@ npm run preview
    - Workflow permissions: **Read and write permissions**
    - Save
 
-Your site will be live at: `https://r66ff.github.io/tda/`
+Your site will be live at: `https://r66ff.github.io/`
 
 #### Option B: Manual Deployment
 
@@ -88,7 +88,7 @@ date: 2024-01-15
 featured: true
 demo: "https://demo.com"
 github: "https://github.com/user/repo"
-image: "/tda/img/my-project.png"
+image: "/img/my-project.png"
 ---
 
 ## Project details here...

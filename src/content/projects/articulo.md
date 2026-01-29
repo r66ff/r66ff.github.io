@@ -6,8 +6,8 @@ date: 2017-06-01
 featured: true
 demo: "https://medium.com/@articuloapp/about-articulo-7707ff898884"
 demoLabel: "Read Medium Post"
-image: "/tda/img/articulo.png"
-banner: "/tda/img/banner-art.png"
+image: "/img/articulo.png"
+banner: "/img/banner-art.png"
 ---
 
 ## The Product
@@ -17,7 +17,7 @@ Built as part of a small, cross-functional engineering team at AOL (now Yahoo), 
 During the project, I contributed heavily to both product and engineering decisions, working on core application features in React Native, shaping the underlying architecture, and collaborating on the overall product concept and UX direction.
 
 <img
-  src="/tda/img/articulo.png"
+  src="/img/articulo.png"
   alt="Articulo Screenshots"
   style="max-width: 400px; width: 100%;"
 />

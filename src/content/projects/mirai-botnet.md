@@ -4,7 +4,7 @@ description: "Analyzing and simulating Mirai botnet traffic to identify network-
 tags: ["Cybersecurity", "Networking"]
 date: 2017-05-01
 featured: true
-demo: "/tda/img/antonina-serdyukova---mirai-botnet-paper.pdf"
+demo: "/img/antonina-serdyukova---mirai-botnet-paper.pdf"
 demoLabel: "Read Paper"
 icon: |
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -52,4 +52,4 @@ IoT botnets like Mirai remain a major attack vector today due to insecure defaul
 - DETER cybersecurity testbed
 
 
-[Read the Full Research Paper](/tda/img/antonina-serdyukova---mirai-botnet-paper.pdf)
+[Read the Full Research Paper](/img/antonina-serdyukova---mirai-botnet-paper.pdf)

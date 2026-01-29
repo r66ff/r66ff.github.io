@@ -1,45 +1,62 @@
 ---
-title: "Articulo Mobile App"
-description: "Content You Trust - A React Native mobile app"
-tags: ["React Native", "Redux", "Mobile", "Firebase", "JavaScript"]
+title: "Personalized Content Discovery App"
+description: "Articulo is a mobile content discovery app designed to help users consume information from sources they trust by following people whose reading habits inspire them."
+tags: ["React Native", "JavaScript"]
 date: 2017-06-01
 featured: true
 demo: "https://medium.com/@articuloapp/about-articulo-7707ff898884"
-video: "https://drive.google.com/open?id=0Bxzdm-dou3xFMHRFX1dSblBsVTQ"
+demoLabel: "Read Medium Post"
 image: "/tda/img/articulo.png"
 banner: "/tda/img/banner-art.png"
-icon: "mobile"
 ---
 
-## What Is Articulo
+## The Product
 
-Articulo is a mobile app that provides a way to consume content that you trust. Follow people who inspire you and read what they read!
+Built as part of a small, cross-functional engineering team at AOL (now Yahoo), Articulo focused on transforming content consumption into a curated, user-driven experience, emphasizing clarity, trust, and usability. The result was a fully functional iOS proof of concept, delivered within a six-week development cycle and distributed via TestFlight.
 
-This project was a part of my Summer Internship at [AOL, Inc (now Oath)](https://www.oath.com/). As a team of 3 developers, we built the proof of concept prototype in 6 weeks and have a working iOS app in TestFlight.
+During the project, I contributed heavily to both product and engineering decisions, working on core application features in React Native, shaping the underlying architecture, and collaborating on the overall product concept and UX direction.
 
-I took a significant part in the implementation of the app in React Native, managing the code on BitBucket, creating weekly sprints, as well as the ideation for the app concept and product development.
+<img
+  src="/tda/img/articulo.png"
+  alt="Articulo Screenshots"
+  style="max-width: 400px; width: 100%;"
+/>
 
-![Articulo Banner](/tda/img/banner-art.png)
+## My Role
 
-## How Did We Build It
+As a software engineer on a three-person team, I worked across the full product lifecycle, including:
 
-We went through the whole Product Lifecycle:
+- Implemented core mobile features using React Native
+- Managed source control and delivery workflows
+- Organized development into weekly sprints
+- Contributed to product ideation, UX decisions, and feature prioritization
+- Shipped a production-ready prototype under tight time constraints
 
-- Ideation
-- Wireframing
-- Information Architecture
-- Development
-- Testing
-- Promoting the App
+This experience laid the foundation for my later work building and owning end-to-end, product-driven platforms.
+
+## How We Built It
+
+The project followed a complete product development process:
+
+- Product ideation and validation
+- Wireframing and information architecture
+- Iterative development and testing
+- Internal distribution and feedback via TestFlight
 
 ## Tech Stack
 
-**Languages:**
-- JavaScript
-- HTML/CSS
+**Languages**
 
-**Tools:**
-- Node.js
+- JavaScript
+- HTML / CSS
+
+**Frameworks & Services**
+
 - React Native
-- Redux
+- Node.js
 - Firebase
+
+**Workflow**
+
+- Git-based version control
+- Agile, sprint-based delivery

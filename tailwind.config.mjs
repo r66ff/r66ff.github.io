@@ -4,20 +4,43 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Lato', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        serif: ['Bree Serif', 'Georgia', 'serif']
+      },
       colors: {
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          950: '#172554'
-        }
+          50: '#e7f3f4',
+          100: '#cfe7e9',
+          200: '#a2d2d5',
+          300: '#75bcbf',
+          400: '#317E87',
+          500: '#2B7078',
+          600: '#245b61',
+          700: '#1d4750',
+          800: '#15353a',
+          900: '#0e2427',
+          950: '#071518'
+        },
+        accent: {
+          50: '#fff1f6',
+          100: '#ffd9e7',
+          200: '#ffb0d0',
+          300: '#ff7fb4',
+          400: '#E5006D',
+          500: '#B80059',
+          600: '#930047',
+          700: '#760039',
+          800: '#59002b',
+          900: '#3d001e',
+          950: '#240012'
+        },
+        link: {
+          DEFAULT: '#2B7078',
+          hover: '#317E87'
+        },
+        body: '#12000B',
+        heading: '#281721'
       }
     }
   },

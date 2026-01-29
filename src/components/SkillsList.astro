@@ -1,72 +1,79 @@
 ---
-const skills = {
-  languages: [
-    'Python',
-    'JavaScript',
-    'TypeScript',
-    'PHP',
-    'C++',
-    'HTML/CSS'
-  ],
-  frameworks: [
-    'Node.js',
-    'React',
-    'React Native',
-    'Redux',
-    'Astro',
-    'Laravel'
-  ],
-  tools: [
-    'Agile / Scrum',
-    'Sketch / Figma / Adobe Suite',
-    'UX / UI',
-    'Wireframing',
-    'Product Creation',
-    'Git'
-  ]
-}
+const skillSections = [
+  {
+    title: 'Languages',
+    items: [
+      'TypeScript',
+      'JavaScript',
+      'Python',
+      'HTML/CSS'
+    ]
+  },
+  {
+    title: 'Libraries & Frameworks',
+    items: [
+      'Next.js',
+      'React',
+      'React Native',
+      'Node.js',
+      'Astro',
+      'Strapi'
+    ]
+  },
+  {
+    title: 'Cloud & Delivery',
+    items: [
+      'AWS',
+      'Docker',
+      'Netlify',
+      'Linux',
+      'CI/CD',
+      'Git'
+    ]
+  },
+  {
+    title: 'Data & APIs',
+    items: [
+      'REST APIs',
+      'GraphQL',
+      'SQL & NoSQL Databases',
+      'Headless CMS Architecture'
+    ]
+  },
+  {
+    title: 'Product & UX',
+    items: [
+      'Product Strategy',
+      'Mobile-first, responsive web experiences',
+      'UX / UI Design',
+      'Analytics & Performance Optimization'
+    ]
+  },
+  {
+    title: 'Workflow & Tooling',
+    items: [
+      'AI-assisted Development',
+      'Agile / Iterative Delivery',
+      'Technical Mentorship'
+    ]
+  }
+]
 ---
 
-<div class="grid md:grid-cols-3 gap-8">
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Languages</h3>
-    <ul class="space-y-2">
-      {skills.languages.map((skill) => (
-        <li class="flex items-center text-gray-700 dark:text-gray-300">
-          <svg class="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          {skill}
-        </li>
-      ))}
-    </ul>
-  </div>
-
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Libraries & Frameworks</h3>
-    <ul class="space-y-2">
-      {skills.frameworks.map((skill) => (
-        <li class="flex items-center text-gray-700 dark:text-gray-300">
-          <svg class="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          {skill}
-        </li>
-      ))}
-    </ul>
-  </div>
-
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Design & Product</h3>
-    <ul class="space-y-2">
-      {skills.tools.map((skill) => (
-        <li class="flex items-center text-gray-700 dark:text-gray-300">
-          <svg class="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          {skill}
-        </li>
-      ))}
-    </ul>
-  </div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {skillSections.map((section) => (
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+      <h3 class="text-xl md:text-2xl mb-4 text-gray-900 dark:text-gray-100">{section.title}</h3>
+      <ul class="space-y-2">
+        {section.items.map((skill) => (
+          <li class="flex items-center text-gray-700 dark:text-gray-300">
+            <svg class="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
 </div>

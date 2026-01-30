@@ -9,17 +9,30 @@ interface Props {
   demo?: string
   demoLabel?: string
   github?: string
+  cardClass?: string
 }
 
-const { title, description, tags, slug, image, icon, demo, demoLabel, github } = Astro.props
+const { title, description, tags, slug, image, icon, demo, demoLabel, github, cardClass = '' } = Astro.props
 const base = import.meta.env.BASE_URL
 const demoText = demoLabel || 'View Demo'
+const baseCardClass = 'bg-white'
+const darkBgMatch = cardClass.match(/dark:bg-[^\s]+/)
+const imageBgClass = `bg-white ${darkBgMatch ? darkBgMatch[0] : 'dark:bg-gray-900'}`
+const resolveDemoUrl = (value: string) => {
+  if (value.startsWith('http')) {
+    return value
+  }
+  if (value.startsWith('/')) {
+    return value
+  }
+  return `${base}${value}`
+}
 const isImageSvg = Boolean(image?.toLowerCase().endsWith('.svg'))
 ---
 
-<article class="project-card h-full flex flex-col bg-white dark:bg-gray-900 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden" data-tags={tags.join(',')}>
+<article class={`project-card h-full flex flex-col ${baseCardClass} rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden ${cardClass}`} data-tags={tags.join(',')}>
   {image && (
-    <div class="p-6 pb-0 aspect-video overflow-hidden bg-white dark:bg-gray-900 max-h-[200px]">
+    <div class={`p-6 pb-0 aspect-video overflow-hidden max-h-[200px] ${imageBgClass}`}>
       <img
         src={image}
         alt={title}
@@ -65,7 +78,7 @@ const isImageSvg = Boolean(image?.toLowerCase().endsWith('.svg'))
       </a>
       {demo && (
         <a
-          href={demo.startsWith('http') ? demo : base + demo}
+          href={resolveDemoUrl(demo)}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-link-hover dark:hover:text-primary-400 transition-colors"

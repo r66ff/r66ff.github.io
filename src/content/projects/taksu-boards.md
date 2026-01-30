@@ -54,164 +54,148 @@ icon: |
 
 ## Project Overview
 
-Taksu Boards is a longboard-focused surfboard brand and a custom web platform designed to help surfers make informed, intentional decisions when choosing a board.
+Taksu Boards is a longboard-focused surfboard brand and a **custom web platform** designed to help surfers make **informed, intentional board choices**.
 
-The core challenge behind the project is translating highly nuanced physical shape design into a guided, educational digital experience. Rather than offering a generic configurator, the platform leads users through a structured decision process that aligns surfboard shape with personal goals and skill level.
+The core challenge is translating highly nuanced **physical shape design** into a **guided, educational digital experience**. Rather than a generic configurator, the platform leads users through a structured decision process that aligns surfboard shape with personal goals and skill level.
 
 ## Product Vision
 
-The platform is built around a modular approach to surfboard design:
+The system is built around a **modular surfboard design model**:
 
-- Users begin by identifying their surfing goals and skills
-- The system suggests base models optimized for specific, often incompatible, performance characteristics (e.g. fast turning vs. nose stability)
-- From there, users can apply targeted modifications — adjusting speed, lift, maneuverability, or stability — while learning how each choice affects real-world performance
+- Users define goals and experience level
+- The system suggests **base models** optimized for specific, often incompatible, performance characteristics (e.g. fast turning vs. nose stability)
+- Then users apply **targeted modifications** (speed, lift, stability, control) while learning their real-world effects
 
-The goal is not only to sell boards, but to educate users so they can make confident, informed decisions grounded in design principles.
+The goal is not only to sell boards, but to educate users so they can make confident, informed decisions.
 
 ## Research & Concept Phase
 
-Before any technical development began, the project went through an extended research and experimentation phase.
+Before technical development, the project went through an extended **research and experimentation phase**:
 
-This included:
-- Iterating on longboard shapes and performance characteristics
-- Testing how subtle geometry changes affect ride feel and usability
-- Defining a taxonomy of surfboard features that could be meaningfully explained to non-experts
+- Iterative longboard shape testing
+- Mapping how geometry changes affect performance
+- Defining a feature taxonomy that can be explained to non-experts
 
-This foundational work was necessary to ensure that the eventual phisical product reflected real, validated design logic, rather than abstract configuration options.
+This foundational work was necessary to ensure that the phisical product reflected real, validated shape design logic, rather than abstract configuration options.
 
 ## Current Status
 
-The web platform and underlying architecture are complete and production-ready. Core user flows, content models, and system structure are fully implemented and stable.
+The project is not public yet and is currently in **active content production**, with the platform itself fully implemented and stable.
 
-The project is not public yet for one reason: content completeness.
+What’s done:
+- Complete application architecture and APIs
+- User flows: board shaping and configuration, order creation, cart and checkout, promo and referral validation, rewards calculation, user accounts, and order history
+- CMS models, business logic, and third-party integrations
+- Performance, security, and validation layers
 
-Remaining work is focused on:
-- Producing final photography, video, and social media presence
-- Writing structured, educational content that explains surfboard design principles and trade-offs
-- Ensuring users receive accurate guidance at each decision point
+What’s in progress:
+- Final photography and video
+- Educational content explaining shape trade-offs
+- Marketing and launch materials
 
-Because the product’s value depends on education and trust, launching with placeholder or incomplete content would compromise the user experience. Currently, the platform is in active content production while the technical foundation remains finalized.
+The platform is held back until the educational content is as clear, accurate, and intentional as the system behind it.
 
 ## My Role
 
-I am responsible for the entire digital product:
+I own the **entire digital product**:
 
-- Product definition and UX flows
-- Brand identity and visual design
-- Frontend architecture and implementation
-- Backend modeling, CMS structure, and APIs
-- Deployment, analytics, and performance monitoring
+- **Product definition & UX flows**
+- **Brand identity and design system**
+- **Frontend architecture (Next.js, TypeScript)**
+- **Backend APIs, CMS modeling, and business logic**
+- **Performance optimization, security, and deployment**
 
-Surfboard 3D design and shaping are handled by my collaborators, allowing a clear separation between physical product design and digital platform development.
+Surfboard 3D design and physical shaping and glassing are handled by my collaborators.
 
-## Why This Project Matters
-
-Taksu Boards reflects the kind of sustained, real-world product work required to build and evolve complex user-facing platforms.
-
-The project demonstrates:
-- Long-term ownership of system architecture and user experience
-- Translating complex, domain-specific rules into intuitive user flows and system logic
-- Designing platforms that integrate education, content, and commerce
-- Building a production-grade system with scalability and extensibility in mind
-
-The scope, constraints, and decisions involved mirror those found in modern product teams, making the work directly applicable to full-stack engineering roles.
-
-## Architecture & Data Flow
+## Architecture & Tech Stack
 
 ### Frontend
-- **Next.js** with server and client components
-- **TypeScript** with Zod schemas for runtime validation
+- **Next.js** with server/client components
+- **TypeScript + Zod** for runtime data validation
 - **Zustand** for long-lived, multi-step state (suggestions, boards, orders, users)
-- Global loading and transition handling via Suspense boundaries
+- Global loading and transitions via **Suspense boundaries**
 
 ### Backend & APIs
-- **Next.js route handlers** for all write operations
-- Validation-first API design with consistent error responses
-- **JWT-based authentication** with cookie-backed sessions
-- Optional **Redis-backed rate limiting** for API protection
+- **Next.js route handlers** for all mutations
+- Validation-first API design with consistent error handling
+- **JWT authentication** with cookie-backed sessions
+- Optional **Redis-based rate limiting** for API protection
 
 ### CMS & Business Logic
-- **Strapi 5** as the single source of truth for:
+- **Strapi 5** as the system of record for:
   - Content and educational materials
   - Base models and board features
-  - Orders, rewards, referrals, and promos
-- Business logic extracted into modular helpers (pricing, rewards, promos, board specs)
+  - Orders, rewards, referrals, promos
+- Business logic isolated into reusable helpers (pricing, rewards, specs)
 
 ## Implemented User Flows
 
-The platform supports a multi-stage, stateful user journey with both guest and authenticated paths:
+**All flows are fully implemented**, including validation, persistence, and error handling:
 
-- **Guided board design flow**
-  - Goal-based suggestions captured in persistent state
-  - Base model recommendations derived from incompatible performance goals
-  - Feature selection with cumulative effects on board behavior
-  - Final customization and add-to-cart flow
+- **Guided board design**
+  - Goal-based suggestions
+  - Base model recommendations
+  - Feature combinations with cumulative effects
+  - Customization → cart → checkout
+  - Side-by-side board comparison
 
 - **Cart & checkout**
-  - Mixed cart support (custom boards + products)
-  - Context-aware fin and accessory recommendations
-  - Promo code validation scoped by order type (`board`, `product`, `mixed`)
-  - Guest checkout with optional account creation and pending user linking
+  - Mixed carts (custom boards + products)
+  - Context-aware recommendations
+  - Promo validation by order type
+  - Guest checkout with optional account linking
 
-- **Orders & accounts**
-  - Separate board and product order pipelines
-  - Order history with pricing breakdowns, discounts, and reward status
-  - Persistent user accounts showing rewards, referrals, and past purchases
+- **Accounts & orders**
+  - Separate board and product pipelines
+  - Order history with discounts and rewards
+  - Persistent accounts with referrals and reward balances
 
 - **Rewards & referrals**
-  - Referral code validation with eligibility checks
-  - Rewards accrual on paid orders
-  - Partial reward application with leftover handling
-  - Server-side validation and recalculation on cart changes
+  - Eligibility validation
+  - Reward accrual on paid orders
+  - Reward application with leftover handling
+  - Server-side recalculation on cart changes
 
-These flows are implemented end to end, including validation, persistence, and error handling.
+## Media & Performance
 
-## Media & Performance Optimization
+The platform includes an **optimized Cloudinary pipeline**:
 
-The platform includes a full **Cloudinary integration** designed for performance and scalability:
+- Strapi uploads trigger **eager transformations**
+- Responsive variants generated ahead of time
+- Blur placeholders and explicit sizing
+- Delivery in modern formats (WebP / AVIF)
 
-- Strapi uploads trigger **Cloudinary eager transformations**
-- Pre-generated responsive variants for all major image types
-- Frontend helpers generate optimized URLs and blur placeholders
-- Images are delivered in modern formats (WebP / AVIF) with proper sizing
+Results:
+- Reduced Cloudinary bandwidth and transformation usage
+- Faster **LCP** via priority loading and correct dimensions
+- Improved **CLS** via placeholders and sizing
 
-Measured and targeted improvements include:
-- Significant bandwidth reduction via format optimization
-- Faster LCP through priority loading and correct dimensions
-- Improved CLS through blur placeholders and explicit sizing
+## Design System & Branding
 
-This media pipeline is fully implemented and production-ready.
+I designed and implemented the complete **brand and UI system**:
 
-## Design System & Brand Implementation
+- Logo and visual identity
+- Accessible color palette and typography
+- Component-driven system using **Tailwind CSS + ShadCN UI**
+- Consistent styling across marketing, education, and commerce
 
-In addition to engineering, I designed and implemented the complete brand system:
-
-- Logo design and visual identity
-- Color palette and typography with accessibility considerations
-- Component-driven design system using Tailwind CSS and ShadCN UI
-- Consistent styling across marketing, educational, and commerce surfaces
-
-All brand and UI work was created using **Affinity** tools and translated directly into the live design system.
+All design work was created in **Affinity** and translated directly into code.
 
 ## Development Workflow
 
-The platform is built using a modern, evolving development workflow:
+- TypeScript-first development
+- Unit and integration testing with **Vitest**
+- Security-first middleware (XSS protection, sanitization)
+- **AI-assisted development using Cursor**, with evolving agent-based workflows
 
-- TypeScript-first codebase with strong validation boundaries
-- Unit and integration testing via **Vitest**
-- Security-first middleware (XSS protection, input sanitization)
-- AI-assisted development using **Cursor** and agent-based workflows
-
-This workflow has evolved continuously alongside the project as AI tooling matured, improving iteration speed while maintaining code quality and architectural clarity.
+The workflow has matured alongside the project, balancing rapid iteration with long-term maintainability.
 
 ## Launch Timing
 
-Taksu Boards spans multiple disciplines simultaneously:
+Taksu Boards spans multiple parallel tracks:
 - Physical product design and testing
-- Digital platform engineering
-- Brand and design system creation
-- Business setup and operations in Indonesia
-- Content production and marketing
+- Platform testing with finalized content
+- Brand materials and content production
+- Business setup in Indonesia
 
-The platform itself is complete and stable. Time is being invested deliberately to ensure that the educational content matches the quality and rigor of the underlying system before public launch.
-
+The platform will go public once the educational content that supports user decision-making is finalized.

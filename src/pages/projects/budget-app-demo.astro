@@ -254,14 +254,15 @@
           var selectors = UICtrl.getSelectors();
           document.getElementById(selectors.addNewItem).addEventListener('click', handleNewItem);
           document.addEventListener('keypress', function(event) {
-            if (event.keyCode === 13 || event.which === 13) { handleNewItem(); }
+            if (event.key === 'Enter') { handleNewItem(); }
           });
           document.getElementById(selectors.addType).addEventListener('change', function(){
             UICtrl.changeInputBorderColor();
           });
           document.getElementById('data-container').addEventListener('click', function(event){
-            if(event.srcElement.classList.contains('fa-times')){
-              var itemElement = findAncestor(event.srcElement, 'item');
+            var target = event.target;
+            if (target instanceof Element && target.classList.contains('fa-times')) {
+              var itemElement = findAncestor(target, 'item');
               if(itemElement !== null){
                 var id = itemElement.id.split('-');
                 if(id[0] === 'inc'){ AppCtrl.deleteItem('inc', id[1]); }

@@ -178,8 +178,8 @@ var Controller = (function(AppCtrl, UICtrl) {
     document.getElementById(selectors.addNewItem).addEventListener('click', handleNewItem);
     // also handle the user pressing the return key to add an item
     document.addEventListener('keypress', function(event) {
-      if (event.keyCode === 13 || event.which === 13) {
-          handleNewItem();
+      if (event.key === 'Enter') {
+        handleNewItem();
       }
     });
     // also make the border color of the input fields correspond to the type of the input: income color for + and expenses color for -
@@ -190,9 +190,10 @@ var Controller = (function(AppCtrl, UICtrl) {
     document.getElementById('data-container').addEventListener('click', function(event){
       // delete the item from the data and the DOM
       // if the element clicked is the delete icon (class fa-times)
-      if(event.srcElement.classList.contains('fa-times')){
+      var target = event.target;
+      if (target instanceof Element && target.classList.contains('fa-times')) {
         // find the item in the DOM and determine what kind of an item it is: 'inc' or 'exp'
-        var itemElement = findAncestor(event.srcElement, 'item');
+        var itemElement = findAncestor(target, 'item');
         if(itemElement !== null){
           var id = itemElement.id;
           id = id.split('-');

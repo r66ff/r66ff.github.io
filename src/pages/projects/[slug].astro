@@ -25,6 +25,16 @@ const { Content } = await project.render()
 const demoLabel = project.data.demoLabel || 'View Demo'
 const bannerSrc = project.data.banner || project.data.image
 const isBannerSvg = Boolean(bannerSrc?.toLowerCase().endsWith('.svg'))
+const isArticulo = project.slug === 'articulo'
+const resolveDemoUrl = (value: string) => {
+  if (value.startsWith('http')) {
+    return value
+  }
+  if (value.startsWith('/')) {
+    return value
+  }
+  return `${base}${value}`
+}
 
 // Get related projects based on shared tags
 const allProjects = await getCollection('projects')
@@ -54,7 +64,13 @@ const relatedProjects = allProjects
           style={`background-image: url('${bannerSrc}');`}
         ></div>
       )}
-      <div class="absolute inset-0 bg-white/70 dark:bg-gray-900/70"></div>
+      <div
+        class:list={{
+          'absolute inset-0': true,
+          'bg-white/50 dark:bg-gray-900/50': isArticulo,
+          'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm': !isArticulo
+        }}
+      ></div>
       <div
         class:list={{
           'relative max-w-4xl mx-auto py-10 flex flex-col justify-center': true,
@@ -91,10 +107,10 @@ const relatedProjects = allProjects
         <div class="pt-2 flex flex-wrap gap-4">
           {project.data.demo && (
             <a
-              href={project.data.demo.startsWith('http') ? project.data.demo : base + project.data.demo}
+              href={resolveDemoUrl(project.data.demo)}
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-primary inline-flex items-center px-6 py-3 bg-primary-500 hover:bg-primary-400 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+              class="btn-primary inline-flex items-center px-6 py-3 bg-primary-500 hover:bg-primary-400 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 visited:text-gray-100 focus:text-gray-100 active:text-gray-100"
             >
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -137,7 +153,7 @@ const relatedProjects = allProjects
           {project.data.carousel && project.data.carousel.length > 0 && (
             <section class="mb-12 mt-6" aria-label="Project screenshots" data-carousel>
               <div class="relative">
-                <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+                <div class="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 carousel-track" data-carousel-track>
                   {project.data.carousel.map((item, idx) => (
                     <figure
                       class:list={{
@@ -150,6 +166,7 @@ const relatedProjects = allProjects
                         src={item.image}
                         alt={item.caption ? item.caption : `${project.data.title} screenshot ${idx + 1}`}
                         class="w-full h-auto"
+                        draggable="false"
                       />
                       {item.caption && (
                         <figcaption class="px-6 py-4 text-sm bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100">
@@ -213,6 +230,7 @@ const relatedProjects = allProjects
                   demo={related.data.demo}
                   demoLabel={related.data.demoLabel}
                   github={related.data.github}
+                  cardClass="bg-white dark:bg-gray-800"
                 />
               ))}
             </div>
@@ -233,8 +251,9 @@ const relatedProjects = allProjects
     const prevButton = carousel.querySelector('[data-carousel-prev]')
     const nextButton = carousel.querySelector('[data-carousel-next]')
     const status = carousel.querySelector('[data-carousel-status]')
+    const track = carousel.querySelector<HTMLElement>('[data-carousel-track]')
 
-    if (!slides.length || !prevButton || !nextButton || !status) {
+    if (!slides.length || !prevButton || !nextButton || !status || !track) {
       return
     }
 
@@ -242,7 +261,9 @@ const relatedProjects = allProjects
 
     const update = () => {
       slides.forEach((slide, index) => {
-        slide.classList.toggle('hidden', index !== currentIndex)
+        const isActive = index === currentIndex
+        slide.classList.toggle('hidden', !isActive)
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true')
       })
       status.textContent = `${currentIndex + 1} / ${slides.length}`
     }
@@ -257,11 +278,69 @@ const relatedProjects = allProjects
       update()
     })
 
+    let startX = 0
+    let currentX = 0
+    let isDragging = false
+    const threshold = 40
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) {
+        return
+      }
+      if (event.pointerType === 'mouse') {
+        event.preventDefault()
+      }
+      isDragging = true
+      startX = event.clientX
+      currentX = startX
+      track.setPointerCapture(event.pointerId)
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isDragging) {
+        return
+      }
+      currentX = event.clientX
+    }
+
+    const onPointerUp = (event: PointerEvent) => {
+      if (!isDragging) {
+        return
+      }
+      const deltaX = currentX - startX
+      if (Math.abs(deltaX) > threshold) {
+        if (deltaX > 0) {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length
+        } else {
+          currentIndex = (currentIndex + 1) % slides.length
+        }
+        update()
+      }
+      isDragging = false
+      track.releasePointerCapture(event.pointerId)
+    }
+
+    track.addEventListener('pointerdown', onPointerDown, { passive: false })
+    track.addEventListener('pointermove', onPointerMove)
+    track.addEventListener('pointerup', onPointerUp)
+    track.addEventListener('pointercancel', onPointerUp)
+    track.addEventListener('pointerleave', onPointerUp)
+
     update()
   })
 </script>
 
 <style>
+  .carousel-track {
+    touch-action: pan-y;
+    user-select: none;
+    cursor: grab;
+  }
+
+  .carousel-track:active {
+    cursor: grabbing;
+  }
+
   .prose :global(a) {
     @apply text-link dark:text-primary-400 hover:text-link-hover dark:hover:text-primary-300 hover:underline;
   }

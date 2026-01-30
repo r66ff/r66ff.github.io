@@ -13,19 +13,22 @@ const navItems = [
   <nav class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
       <a href="/" class="flex items-center space-x-2">
-        <img src="/img/logo.png" alt="Antonina Serdyukova" class="h-10 w-auto" />
+        <img src="/img/logo.png" alt="Antonina Serdyukova" class="h-10 w-auto dark:invert dark:brightness-0 dark:contrast-200" />
       </a>
       
-      <button
-        id="mobile-menu-button"
-        type="button"
-        class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-        aria-label="Toggle menu"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+      <div class="flex items-center gap-4 md:hidden">
+        <ThemeToggle />
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
 
       <div id="mobile-menu" class="hidden md:flex md:items-center md:space-x-8">
         <div class="flex flex-col md:flex-row md:items-center md:space-x-8 space-y-4 md:space-y-0 py-4 md:py-0">
@@ -52,9 +55,6 @@ const navItems = [
             {item.label}
           </a>
         ))}
-        <div class="pt-2">
-          <ThemeToggle />
-        </div>
       </div>
     </div>
   </nav>
@@ -66,5 +66,20 @@ const navItems = [
 
   mobileMenuButton?.addEventListener('click', () => {
     mobileMenuExpanded?.classList.toggle('hidden')
+  })
+
+  document.addEventListener('click', (event) => {
+    if (!mobileMenuExpanded || mobileMenuExpanded.classList.contains('hidden')) {
+      return
+    }
+    const target = event.target
+    if (!(target instanceof HTMLElement)) {
+      return
+    }
+    const clickedToggle = mobileMenuButton?.contains(target)
+    const clickedMenu = mobileMenuExpanded.contains(target)
+    if (!clickedToggle && !clickedMenu) {
+      mobileMenuExpanded.classList.add('hidden')
+    }
   })
 </script>
